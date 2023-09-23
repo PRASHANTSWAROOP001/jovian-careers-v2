@@ -25,8 +25,22 @@ def load_job_with_id(id):
         query = text("SELECT * FROM jobs WHERE id = :val").bindparams(val=id)
         result = conn.execute(query)
         rows = result.mappings().all()
-        
+
         if len(rows) == 0:
             return None
         else:
             return dict(rows[0])
+
+def add_application_to_db(job_id, data):
+    with engine.connect() as conn:
+        query = text("INSERT INTO applications (job_id, full_name, email, linkedin_url, education, work_experience, resume_url) VALUES (:job_id, :full_name, :email, :linkedin_url, :education, :work_experience, :resume_url);")
+
+        conn.execute(query, {
+            "job_id": job_id,
+            "full_name": data['Full Name'],
+            "email": data['Email'],
+            "linkedin_url": data['LinkedIn Url'],
+            "education": data['Education Qualification'],
+            "work_experience": data['Job experience'],
+            "resume_url": data['Resume Link']
+        })

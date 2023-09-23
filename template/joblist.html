@@ -53,6 +53,42 @@
                 {% endfor %}
             </ol>
 
+            <form action="/jobs/{{job.id}}/apply" method="post">
+                <div class="mb-2">
+                    <label>Full Name :</label><br>
+                    <input type="text" required placeholder="Bruce Wayne" name="Full Name">
+                </div>
+
+                <div class="mb-2">
+                    <label>Email : </label><br>
+                    <input type="email" required placeholder="brucewayne@gmail.com" name="Email">
+                </div>
+                
+                <div class="mb-2">
+                    <label>LinkedIn Url : </label><br>
+                    <input type="url" name="LinkedIn Url">
+                </div>
+                <div class="mb-2">
+                    <label>Education Qualification : </label><br>
+                    <textarea name="Education Qualification"></textarea>
+                </div>
+                <div class="mb-2">
+                    <label>Job experience : </label><br>
+                    <textarea name = "Job experience"></textarea>
+                </div>
+
+                <div class="mb-2">
+                    <label>Resume link : </label><br>
+                    <input type="url" name="Resume Link">
+                </div>
+
+                <div class="mb-2">
+                    <input type="submit">
+                </div>
+
+
+            </form>
+
         {% include "footer.html" %}
 
     </body>
